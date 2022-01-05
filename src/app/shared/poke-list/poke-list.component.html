@@ -1,28 +1,21 @@
-<a class="pokemon">
+<ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
+<a [routerLink]="['details', pokemon.status.id]" class="pokemon" *ngIf="pokemon.status">
   <section class="pokemon_status">
-  <h2>Bulbizarre</h2>
+  <h2>{{pokemon.name}} </h2>
 
   <ul>
-    <li>Plante</li>
-    <li>Poison</li>
+    <li *ngFor="let value of pokemon.status.types">
+      {{value.type.name}}
+    </li>
   </ul>
 </section>
 
 <section class="pokemon_image">
-  <img src="assets/pokemon.png" alt="Bulbizarre">
+  <img
+    [src]="pokemon.status.sprites.other.dream_world.front_default"
+    [alt]="pokemon.name"
+  >
 </section>
 </a>
-<a class="pokemon">
-  <section class="pokemon_status">
-  <h2>Bulbizarre</h2>
 
-  <ul>
-    <li>Plante</li>
-    <li>Poison</li>
-  </ul>
-</section>
-
-<section class="pokemon_image">
-  <img src="assets/pokemon.png" alt="Bulbizarre">
-</section>
-</a>
+</ng-template>
